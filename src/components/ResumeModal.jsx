@@ -65,6 +65,14 @@ export default function ResumeModal({ isOpen, onClose }) {
               <a href={resumeData.personal.github} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">
                 GitHub
               </a>
+              {resumeData.personal.credly && (
+                <>
+                  <span>|</span>
+                  <a href={resumeData.personal.credly} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                    Credly Badges
+                  </a>
+                </>
+              )}
             </div>
           </div>
 
@@ -181,13 +189,22 @@ export default function ResumeModal({ isOpen, onClose }) {
             <h2 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold border-b border-slate-800 pb-1 mb-2">
               Certifications
             </h2>
-            <ul className="list-disc pl-5 space-y-1 text-xs text-slate-300">
-              <li>
-                <span className="font-semibold text-white">Data Visualisation</span> — Verified Certificate
-              </li>
-              <li>
-                <span className="font-semibold text-white">30 Days Power BI Micro Course</span> — Verified Certificate
-              </li>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-300">
+              {resumeData.certifications.map((c, idx) => (
+                <li key={idx}>
+                  <span className="font-semibold text-white">{c.title}</span> — {c.issuer}
+                  {c.credentialUrl && (
+                    <a
+                      href={c.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 text-emerald-400 hover:text-emerald-300 hover:underline font-mono text-[11px]"
+                    >
+                      [Credly Verified]
+                    </a>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

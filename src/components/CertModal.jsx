@@ -30,9 +30,15 @@ export default function CertModal({ cert, onClose }) {
         {/* Certificate Body */}
         <div className="p-6 space-y-6 text-center">
           {/* Badge */}
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto text-emerald-400 shadow-lg shadow-emerald-500/10">
-            <ShieldCheck className="w-8 h-8" />
-          </div>
+          {cert.badgeImage ? (
+            <div className="w-20 h-20 rounded-2xl bg-slate-950/90 border border-emerald-500/40 p-2 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/10">
+              <img src={cert.badgeImage} alt={cert.title} className="w-full h-full object-contain" />
+            </div>
+          ) : (
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto text-emerald-400 shadow-lg shadow-emerald-500/10">
+              <ShieldCheck className="w-8 h-8" />
+            </div>
+          )}
 
           <div>
             <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30 font-semibold">
@@ -57,6 +63,20 @@ export default function CertModal({ cert, onClose }) {
                 <CheckCircle2 className="w-3.5 h-3.5" /> Confirmed
               </span>
             </div>
+            {cert.credentialUrl && (
+              <div className="flex justify-between items-center pb-2 border-b border-slate-800/80">
+                <span className="text-slate-400 font-mono">Digital Credential:</span>
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1 hover:underline font-mono text-[11px]"
+                >
+                  Credly Badge
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            )}
             <div>
               <span className="text-slate-400 font-mono block mb-2">Validated Competencies:</span>
               <div className="flex flex-wrap gap-1.5">
@@ -71,7 +91,20 @@ export default function CertModal({ cert, onClose }) {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950/60 flex justify-end">
+        <div className="p-4 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between gap-3">
+          {cert.credentialUrl ? (
+            <a
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-500/30 rounded-xl transition-all shadow-sm"
+            >
+              <span>View on Credly</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          ) : (
+            <div />
+          )}
           <button
             onClick={onClose}
             className="px-4 py-2 text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 rounded-xl transition-all"

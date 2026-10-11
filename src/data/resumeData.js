@@ -8,6 +8,7 @@ export const resumeData = {
     location: "Varanasi / Kanpur, India",
     linkedin: "https://www.linkedin.com",
     github: "https://github.com",
+    credly: "https://www.credly.com/users/prabhat-yadav.a84420b2/badges",
     availability: "Actively seeking Entry-Level Data Analyst Roles",
     summary:
       "Recent graduate with a strong foundation in statistics, SQL, and data visualization, seeking an entry-level Data Analyst position. Skilled in analyzing datasets, identifying trends, and presenting findings clearly through tools like Excel, Power BI, and Python. Eager to apply analytical skills to support data-driven decisions and grow within a dynamic team."
@@ -206,6 +207,15 @@ CALCULATE(
   ],
 
   certifications: [
+    {
+      title: "Data Analyst Pathway Fluency",
+      issuer: "IBM SkillsBuild",
+      status: "Verified",
+      credentialUrl: "https://www.credly.com/users/prabhat-yadav.a84420b2/badges",
+      badgeImage: "https://images.credly.com/images/1f924d27-b724-4aa8-970d-ae9d61e32e91/image.png",
+      keySkills: ["Data Analysis Process", "ETL & Data Cleaning", "Inferential Statistics", "Data Visualization", "Microsoft Excel"],
+      linkText: "View Certificate"
+    },
     {
       title: "Data Visualisation",
       issuer: "Industry Verified Certification",

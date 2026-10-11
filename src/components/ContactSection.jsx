@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { resumeData } from '../data/resumeData';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, MessageSquare, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, MessageSquare, Sparkles, Award } from 'lucide-react';
 
 const GithubIcon = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -154,6 +154,17 @@ export default function ContactSection() {
                   <GithubIcon className="w-4 h-4 text-emerald-400" />
                   <span>GitHub</span>
                 </a>
+                {resumeData.personal.credly && (
+                  <a
+                    href={resumeData.personal.credly}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 hover:text-amber-300 text-slate-300 text-xs font-semibold transition-all"
+                  >
+                    <Award className="w-4 h-4 text-amber-400" />
+                    <span>Credly</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
